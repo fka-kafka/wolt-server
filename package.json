@@ -4,12 +4,14 @@
   "description": "back end for the wolt delivery cost calculator app",
   "main": "index.ts",
   "scripts": {
-    "start": "tsc && node ./build/index.js"
+    "start": "tsc -w",
+    "serve": "nodemon ./build/index.js"
   },
   "author": "fka-kafka",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.11.19",
+    "nodemon": "^3.0.3",
     "tslib": "^2.6.2",
     "typescript": "^5.3.3"
   }
