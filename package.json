@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "start": "tsc -w",
-    "serve": "nodemon ./build/index.js"
+    "serve": "nodemon ./build/api/index.js"
   },
   "author": "fka-kafka",
   "license": "ISC",

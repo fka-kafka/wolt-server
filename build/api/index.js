@@ -25,11 +25,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const http = __importStar(require("http"));
 const HOST = {
-    port: 3500,
+    port: 8080,
     hostname: 'localhost'
 };
 const server = http.createServer((req, res) => {
     console.log("Connecton made.\n");
+    console.log(req.method, '\n', req.headers, '\n', req.url);
     if (req.method === 'POST') {
         console.log("Calculation request made.\n");
         res.writeHead(202, "Accepted. Await data.");
@@ -43,5 +44,5 @@ const server = http.createServer((req, res) => {
     res.end();
 });
 server.listen(HOST.port, HOST.hostname, () => {
-    console.log(`\nServer listening on http://${HOST.hostname}:${HOST.port}/\n`);
+    console.log(`\nServer listening on http:${HOST.hostname}:${HOST.port}\n`);
 });
