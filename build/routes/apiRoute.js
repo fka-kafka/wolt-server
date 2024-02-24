@@ -10,7 +10,7 @@ apiRouter.route('/')
     .post((req, res, next) => {
     (0, logger_1.default)(req, next);
     req.body
-        ? res.status(200).send(`Accepted. Await data.\n`)
+        ? res.status(200).send(`Accepted. Await data.\n${req.body}`)
         : res.status(400).send("No data to compute.");
 });
 exports.default = apiRouter;
