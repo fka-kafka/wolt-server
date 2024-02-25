@@ -1,5 +1,2 @@
 node_modules
-*.html
-*.scss
-*.css
-styles
+*.js
