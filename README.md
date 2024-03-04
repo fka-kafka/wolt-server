@@ -1,4 +1,4 @@
-# Wolt Summer 2024 Engineering Internships Pre-Assignment: Frontend source code
+# Wolt Summer 2024 Engineering Internships Pre-Assignment: Backend source code
 See [original repository](https://github.com/woltapp/engineering-internship-2024) for details.
 
 Technologies used:
