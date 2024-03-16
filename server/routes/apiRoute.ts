@@ -1,5 +1,5 @@
 import { Router, NextFunction, Request, Response } from 'express';
-import logger from '../middleware/logger'
+import logger from '../middleware/accessLogger'
 import compute from '../api/computeModule';
 
 const apiRouter: Router = Router();

@@ -1,60 +1,25 @@
-function compute(cartValue: number, distance: number, items: number, day: string, time: number) {
-  let distanceCharge: number = 0;
-  let surcharge: number = 0;
-  let maxDeliveryFee: number = 15;
-  let total: number = 0;
+import chargableAmount from "./chargableModule";
+import minimumChargableAmount from "./minimumChargableModule";
+
+function compute(
+  cartValue: number,
+  distance: number,
+  items: number,
+  day: string,
+  time: number
+) {
   let deliveryFee: number | boolean = 0;
 
   if (cartValue > 10 && cartValue < 200) {
-    (distance <= 1000)
-      ? distanceCharge = 2
-      :
-      (((distance - 1000) % 500) === 0 && distance !== 0)
-        ? distanceCharge = 2 + (((distance - 1000) / 500) * 2)
-        :
-        (Math.round((distance - 1000) / 1000) > ((distance - 1000) / 1000))
-          ? distanceCharge = 2 + ((Math.round((distance - 1000) / 1000)) * 2)
-          : distanceCharge = 2 + ((Math.round((distance - 1000) / 1000)) * 2) + 1;
-
-    (items >= 5 && items < 12)
-      ? surcharge = (items - 4) * 0.5
-      :
-      (items >= 5 && items > 12)
-        ? surcharge = ((items - 4) * 0.5) + 1.2
-        : surcharge = 0;
-
-    (day === 'Friday' && (time >= 15 && time <= 18))
-      ? total = (surcharge + distanceCharge) * 1.2
-      : total = surcharge + distanceCharge;
-
-    if (total > maxDeliveryFee) {
-      return deliveryFee = false
-    } else return deliveryFee = total
+    return (deliveryFee = chargableAmount(distance, items, day, time));
   } else if (cartValue < 10) {
-    (distance <= 1000)
-      ? distanceCharge = 2
-      :
-      (((distance - 1000) % 500) === 0 && distance !== 0)
-        ? distanceCharge = 2 + (((distance - 1000) / 500) * 2)
-        :
-        (Math.round((distance - 1000) / 1000) > ((distance - 1000) / 1000))
-          ? distanceCharge = 2 + ((Math.round((distance - 1000) / 1000)) * 2)
-          : distanceCharge = 2 + ((Math.round((distance - 1000) / 1000)) * 2) + 1;
-
-    (items >= 5 && items < 12)
-      ? surcharge = (items - 4) * 0.5
-      :
-      (items >= 5 && items > 12)
-        ? surcharge = ((items - 4) * 0.5) + 1.2
-        : surcharge = 0;
-
-    (day === 'Friday' && time === 15)
-      ? total = (surcharge + distanceCharge + (10 - cartValue)) * 1.2
-      : total = surcharge + distanceCharge + (10 - cartValue);
-
-    if (total > maxDeliveryFee) {
-      return deliveryFee = false
-    } else return deliveryFee = total
+    return (deliveryFee = minimumChargableAmount(
+      cartValue,
+      distance,
+      items,
+      day,
+      time
+    ));
   } else deliveryFee = 0;
 
   return deliveryFee;
